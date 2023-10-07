@@ -1,6 +1,6 @@
 const fs = require('fs');
 const pdf = require('pdf-parse');
-const User = require('../models/user');
+// const User = require('../models/user');
 
 
 exports.extractpdf = async(req, res) => {

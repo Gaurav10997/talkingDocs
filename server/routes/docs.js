@@ -11,10 +11,9 @@ const storage = multer.diskStorage({
       cb(null, './uploads');
     },
     filename: function (req, file, cb) {
-      cb(null, `${file.originalname}.pdf`);
+      cb(null, "docs.pdf");
     }
   });
-  
   
   const upload = multer({
       storage: storage,

@@ -1,22 +1,15 @@
 const express = require("express");
 const app = express();
 const pdfroutes = require('./routes/docs')
-const userRoutes = require('./routes/userRoutes')
+// const userRoutes = require('./routes/userRoutes')
 
 const cors = require("cors");
-const mongoose = require('mongoose')
-
-
-
-
-
-
 app.use(express.json());
 app.use(cors());
 
 
 app.use('/pdf' , pdfroutes)
-app.use('/users', userRoutes)
+// app.use('/users', userRoutes)
 
 
 app.listen(8080, () => {
