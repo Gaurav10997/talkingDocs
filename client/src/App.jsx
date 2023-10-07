@@ -16,7 +16,6 @@ const App = () => {
     const loadmodel = await qna.load()
     setModel(loadmodel)
     setIsLoading(false)
-    console.log("model loaded")
   
   }
   

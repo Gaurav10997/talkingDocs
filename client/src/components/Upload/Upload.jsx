@@ -2,32 +2,14 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 import { useRef } from 'react';
-
-
-
 import "./upload.css"
-
-
-
-
-
-// file upload logic goes here
-
-
-
 function Upload() {
   const [selectedFile, setSelectedFile] = useState(null);
   const navigate = useNavigate();
-
-
-  // if the file changed by the user this will help 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setSelectedFile(file);
   };
-
-
-
   const handleFileUpload = async(e) => {
     e.preventDefault();
     const formData = new FormData();

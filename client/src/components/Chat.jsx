@@ -23,7 +23,7 @@ function Chat({model}) {
 
 
   useEffect(()=>{ 
-    fetch("https://talkingdocs.onrender.com/getYourPdfText")
+    fetch("https://talkingdocs.onrender.com/pdf/getYourPdfText")
     .then((res)=>res.json())
     .then((data)=>{
       return(
@@ -63,9 +63,7 @@ async function AutomaticAnswers(){
 async function handleSubmitQuestion(e) {
   // Prevent the default form submission behavior
   e.preventDefault();
-  console.log("handle submit clicked")
   setPending(true)
-
   // Make a copy of the current responses array
   const updatedResponses = [...responses];
 
@@ -73,7 +71,6 @@ async function handleSubmitQuestion(e) {
   const newQuestion = inputRef.current.value;
 
   // Update the responses state by adding a new response object
-  console.log(newQuestion)
   setResponses([...responses, { question: newQuestion  }]);
 
   // Update the questions state by adding the new question
@@ -84,10 +81,8 @@ async function handleSubmitQuestion(e) {
 }
   return (
             <>
-                <>
-  
                 <section className="msger">
-                  < ChatHeader/>
+                   < ChatHeader/>
                   <div style={{margin:"10px"}}></div>
                     <div className="msger-chat" ref={chatboxRef}>
                     <Message answer={"Hey , Now You can ask About Your Pdf "} ></Message>
@@ -101,10 +96,8 @@ async function handleSubmitQuestion(e) {
                       })}
                        {pending && <ThreeDotsHelper/>}
                     </div>
-                   
-                     
-                      <div style={{margin:"10px"}}></div>
-                      <div className="msger-inputarea" >
+                        <div style={{margin:"10px"}}></div>
+                        <div className="msger-inputarea" >
                           <input
                               type="text"
                               className="msger-input"
@@ -115,12 +108,9 @@ async function handleSubmitQuestion(e) {
                           <button   onClick={handleSubmitQuestion}   className="msger-send-btn" >
                               Send
                           </button>
-                          </div>
-
+                        </div>
                 </section>
-</>
-
-     </>
+          </>
   )
 }
 
