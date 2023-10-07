@@ -23,7 +23,7 @@ function Chat({model}) {
 
 
   useEffect(()=>{ 
-    fetch("http://localhost:8080/getYourPdfText")
+    fetch("https://talkingdocs.onrender.com/getYourPdfText")
     .then((res)=>res.json())
     .then((data)=>{
       return(

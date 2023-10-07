@@ -34,7 +34,7 @@ function Upload() {
     formData.append('avatar', selectedFile);
   
     try{
-      const response = await  fetch('http://localhost:8080/upload', {
+      const response = await  fetch('https://talkingdocs.onrender.com/upload', {
         method: 'POST',
         body: formData,
       })
