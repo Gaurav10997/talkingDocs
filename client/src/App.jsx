@@ -5,10 +5,8 @@ import  * as tfjs from "@tensorflow/tfjs"
 import * as qna from "@tensorflow-models/qna"
 
 import { Route,Routes } from 'react-router';
-import Chat from './components/chat';
-
+import Chat from './components/Chat';
 import Loader from './components/common/Loader';
-
 
 const App = () => {
     
