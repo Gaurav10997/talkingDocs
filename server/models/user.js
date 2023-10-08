@@ -48,9 +48,9 @@ UserSchema.pre('save', async function(next) {
     next();
   });
 
-UserSchema.methods.checkPassword = function(realpassword,password) {
+UserSchema.methods.checkPassword = async function(realpassword,password) {
 
-    return bcrypt.compare(realpassword,password)
+    return await bcrypt.compare(realpassword,password)
 };
 
 

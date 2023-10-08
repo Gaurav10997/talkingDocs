@@ -1,3 +1,4 @@
+const { concat } = require('@tensorflow/tfjs');
 const User = require('./../models/user')
 const jwt = require('jsonwebtoken')
 
@@ -27,18 +28,24 @@ exports.signin = async(req,res) =>{
         if(!email || !password){
             throw new Error("Your email or password is blank")
         }
-        const user = await User.findOne({email:email});
+        const user = await User.findOne({email:email}).select('+password');
         if(!user){
             throw new Error("Your email or password is Wrong")
         }
         const token =  jwt.sign({ id: req.body_id }, 'shhhhh');
-        if(!user.checkPassword(password,user.password)){
-            throw new Error("Your email or password is blank")
-        } 
-        res.status(200).json({
+        // console.log(user.checkPassword(password,user.password))
+        console.log(user.password)
+        const checker = await user.checkPassword(password,user.password)
+        
+        
+         if(!checker){
+            throw new Error("Your email or password is Wrong")
+         }
+         res.status(200).json({
             status:"Login succesfull",
             token,
         })
+
     }catch(e){
         console.log(e)
         res.status(303).json({
