@@ -31,7 +31,7 @@ const App = () => {
         <Route path='/' element={<Upload></Upload>}>
 
         </Route>
-        <Route path='/chat' element={<Chat model = {model}/>}>
+        <Route path='/chat' element={<Chat model = {model} />}>
            </Route>
       </Routes>
   } 

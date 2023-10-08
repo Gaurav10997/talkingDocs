@@ -96,8 +96,8 @@ async function handleSubmitQuestion(e) {
                       {responses.map(({question,answer})=>{
                         return(
                           <>
-                          <Message  answer={question} isQuestion={true} name={'Bot'}/>
-                          {answer && <Message answer={answer} isQuestion={false} name = {name}></Message>}
+                          <Message  answer={question} isQuestion={true} name = {name} />
+                          {answer && <Message answer={answer} isQuestion={false}  name={'Bot'}></Message>}
                           </>
                         )
                       })}
