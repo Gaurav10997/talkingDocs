@@ -1,6 +1,4 @@
 import React from 'react'
-// import { useEffect ,   } from 'react'
-
 import "./Loader.css"
 
 import {  Hourglass } from "react-loader-spinner"
