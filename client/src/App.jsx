@@ -24,7 +24,7 @@ const App = () => {
       LoadModel()
   },[])
 
-  //  console.log(authCtx.isLoggedIn)
+   console.log(authCtx.token)
   return (
     <>
     {!authCtx.isLoggedIn? <Login></Login>:isLoading?<Loader/>:<Routes>

@@ -3,6 +3,8 @@ import "./Chat.css"
 import Message from './message/Message'
 import ChatHeader from './chatHeader/ChatHeader'
 import ThreeDotsHelper from './common/ThreeDotsHelper'
+import { useContext } from 'react'
+import AuthContext from './store/AuthContext'
 
 
 function Chat({model}) {
@@ -11,6 +13,7 @@ function Chat({model}) {
   const [responses,setResponses] = useState([]);
   const [passage,setPassage] = useState("")
   const [pending,setPending] = useState(false)
+  const authCtx = useContext(AuthContext)
 
   const chatboxRef = useRef(null);
   const inputRef = useRef();
@@ -23,7 +26,11 @@ function Chat({model}) {
 
 
   useEffect(()=>{ 
-    fetch("https://talkingdocs.onrender.com/pdf/getYourPdfText")
+    fetch("https://talkingdocs.onrender.com/pdf/getYourPdfText",{
+      headers:{
+        'Authorization': `Bearer ${authCtx.token}`
+      }
+    })
     .then((res)=>res.json())
     .then((data)=>{
       return(

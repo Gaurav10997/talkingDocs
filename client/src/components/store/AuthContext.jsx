@@ -19,7 +19,8 @@ const AuthContext = React.createContext({
   const loginHandler = (token) =>{
     setToken(token);
 
-    isLoggedIn=truelocalStorage.setItem('token',token)
+    isLoggedIn=true
+    localStorage.setItem('token',token)
 
   }
   const logoutHandler = () =>{
