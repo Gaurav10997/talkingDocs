@@ -1,52 +1,49 @@
-// const User = require("../models/user")
+const User = require('./../models/user')
+const jwt = require('jsonwebtoken')
 
+exports.signup = async(req,res)=>{
+    console.log(req.body)
+    try{
+        const user = await User.create(req.body);
+        const token =  jwt.sign({ id: req.body_id }, 'shhhhh');
+        res.status(201).json({
+            status:"Acoount sunccessfully Created ",
+            token,
+            data:{
+                user
+            } 
+        })   
+    }catch(e){
+        res.status(201).json({
+            status:"Something Went Wrong while creating account ",
+            err:e
+        }) 
+    }
 
-
-// exports.signIn = async(req,res)=>{
-//     try {
-
-
-//         const savedUser = await  User.create(req.body);
-//          res.status(201).json({
-//             status:'Account Created Succefully',
-//             user:savedUser
-//          })
-// // 
-//     } catch (error) {
-//         res.status(404).json({
-//             status:'Something Went Very Wrong',
-//             user:savedUser
-//          })
-//     }
-// }
-
-
-
-// exports.signUp  = async(req,res) =>{
-//     try{
-//       const currUser = await User.findOne(req.body);
-//       if(currUser){
-//         res.status(201).json({
-//             status:'Account Created Succefully',
-//             user:currUser
-//          })
-//       }
-
-//     }catch(e){
-
-//     }
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
+exports.signin = async(req,res) =>{
+    try{
+        const {email,password} = req.body;
+        if(!email || !password){
+            throw new Error("Your email or password is blank")
+        }
+        const user = await User.findOne({email:email});
+        if(!user){
+            throw new Error("Your email or password is Wrong")
+        }
+        const token =  jwt.sign({ id: req.body_id }, 'shhhhh');
+        if(!user.checkPassword(password,user.password)){
+            throw new Error("Your email or password is blank")
+        } 
+        res.status(200).json({
+            status:"Login succesfull",
+            token,
+        })
+    }catch(e){
+        console.log(e)
+        res.status(303).json({
+            status:"fail",
+        })
+    }
+   
+}
