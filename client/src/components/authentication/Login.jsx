@@ -30,6 +30,7 @@ function Login() {
         body: JSON.stringify(userInfo),
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${authCtx.token}`
         },
       });
     //   console.log(response);
@@ -91,7 +92,7 @@ function Login() {
         <button type="submit">{!newUser ? "Login" : "SignUp"}</button>
         <h3>{!newUser ? "New to Quantive?" : "Already a Quantive User ?"}
           <span onClick={toggleAuth}>
-            <b style={{ color: 'red' }}>
+            <b style={{ color: '#579ffb' }}>
               {!newUser ? "Create an account" : "Login with your account"}
             </b>
           </span>
