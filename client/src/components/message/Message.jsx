@@ -22,7 +22,7 @@ function getCurrentTimeIn12HourFormat(timestamp) {
   }
 
 
-function Message({answer,isQuestion}) {
+function Message({answer,isQuestion,name}) {
   return (
     <div className={isQuestion?"msg right-msg":"msg left-msg"}>
     <div
@@ -35,7 +35,7 @@ function Message({answer,isQuestion}) {
     />
     <div className="msg-bubble">
         <div className="msg-info">
-            <div className="msg-info-name">{isQuestion?"USER":"Bot"}</div>
+            <div className="msg-info-name">{name}</div>
             <div className="msg-info-time">{getCurrentTimeIn12HourFormat(Date.now())}</div>
         </div>
     <div className="msg-text">

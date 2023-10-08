@@ -10,7 +10,8 @@ exports.extractpdf = async(req, res) => {
   
       res.status(200).json({
         status: "Successful",
-        data: data.text
+        data: data.text,
+        username:req.currentuser.username
       });
     } catch (error) {
       res.status(500).json({

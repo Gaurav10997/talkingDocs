@@ -14,6 +14,7 @@ function Chat({model}) {
   const [passage,setPassage] = useState("")
   const [pending,setPending] = useState(false)
   const authCtx = useContext(AuthContext)
+  const [name , setName] = useState('User')
 
   const chatboxRef = useRef(null);
   const inputRef = useRef();
@@ -33,9 +34,8 @@ function Chat({model}) {
     })
     .then((res)=>res.json())
     .then((data)=>{
-      return(
-        setPassage(`${data.data}`)
-      )
+      setName(data.username)
+      setPassage(`${data.data}`)
     })
   },[])
 
@@ -96,8 +96,8 @@ async function handleSubmitQuestion(e) {
                       {responses.map(({question,answer})=>{
                         return(
                           <>
-                          <Message  answer={question} isQuestion={true}/>
-                          {answer && <Message answer={answer} isQuestion={false}></Message>}
+                          <Message  answer={question} isQuestion={true} name={'Bot'}/>
+                          {answer && <Message answer={answer} isQuestion={false} name = {name}></Message>}
                           </>
                         )
                       })}
