@@ -1,7 +1,7 @@
 const express = require("express")
 const Router = express.Router();
 const {uploadYourPdf,extractpdf} = require('../controllers/pdfController')
-
+const {protect} = require('../controllers/authController')
 
 const multer = require("multer")
 
@@ -11,7 +11,8 @@ const storage = multer.diskStorage({
       cb(null, './uploads');
     },
     filename: function (req, file, cb) {
-      cb(null, "docs.pdf");
+      
+      cb(null, `${req.currentuser._id}docs.pdf`);
     }
   });
   
@@ -26,8 +27,8 @@ const storage = multer.diskStorage({
       }
     });
 
-Router.post('/upload',  upload.single('avatar'), uploadYourPdf );
-Router.get("/getYourPdfText", extractpdf);
+Router.post('/upload', protect,  upload.single('avatar'), uploadYourPdf );
+Router.get("/getYourPdfText" , protect, extractpdf);
 
 
 

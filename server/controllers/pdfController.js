@@ -5,7 +5,7 @@ const pdf = require('pdf-parse');
 
 exports.extractpdf = async(req, res) => {
     try {
-      const dataBuffer = fs.readFileSync('./uploads/docs.pdf');
+      const dataBuffer = fs.readFileSync(`./uploads/${req.currentuser._id}docs.pdf`);
       const data = await pdf(dataBuffer);
   
       res.status(200).json({
@@ -13,7 +13,6 @@ exports.extractpdf = async(req, res) => {
         data: data.text
       });
     } catch (error) {
-      // Handle any unexpected errors here
       res.status(500).json({
         status: 'Error',
         message: 'An error occurred while processing the request.'
@@ -44,18 +43,8 @@ exports.extractpdf = async(req, res) => {
   }
 
   exports.uploadYourPdf = async function (req, res) {
-    // const userId = req.params.userId;
-    // const newPicture = req.body.pictureUrl;
-    // const user = await User.findById(userId);
+  
    try{
-        // if (!user) {
-        //   return res.status(404).json({ error: 'User  not found' });
-        // }
-        // if(!req.file){
-        //   return res.status(404).json({ error: 'File is not found' });
-        // }
-        // user.yourDocuments.push(newPicture);
-        // await user.save(req.file.originalname);
         res.status(201).json({
           status: 'Success',
           message: 'File uploaded successfully.',
