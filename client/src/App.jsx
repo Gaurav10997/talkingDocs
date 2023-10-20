@@ -11,7 +11,7 @@ import Login from "./components/authentication/Login"
 import AuthContext from './components/store/AuthContext';
 
 const App = () => {
-    const authCtx = useContext(AuthContext)
+  const authCtx = useContext(AuthContext)
    const [isLoading,setIsLoading] = useState(true)
    const [model ,setModel] = useState(null)
    const [token , setToken] = useState("")
@@ -24,7 +24,6 @@ const App = () => {
       LoadModel()
   },[])
 
-  //  console.log(authCtx.token)
   return (
     <>
     {!authCtx.isLoggedIn? <Login></Login>:isLoading?<Loader/>:<Routes>
